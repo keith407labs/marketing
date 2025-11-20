@@ -52,8 +52,8 @@
 
     @media (max-width: 768px) {
       .hero {
-        text-align: center;
-      }
+      text-align: center;
+      margin-bottom: 32px;
     }
 
     .hero-title {
@@ -69,6 +69,7 @@
       line-height: 1.5;
       color: var(--text-subtle);
       max-width: 520px;
+      margin: 0 auto; /* <- centers the paragraph */
     }
 
     @media (max-width: 768px) {
@@ -80,17 +81,21 @@
     /* PRODUCT CARD */
 
     .product-card {
-      background: var(--card-bg);
-      color: #f9fafb;
-      border-radius: 36px;
-      padding: 32px 24px 36px;
-      box-shadow:
-        0 32px 70px rgba(15, 23, 42, 0.35),
-        0 0 0 1px rgba(15, 23, 42, 0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+        background: var(--card-bg);
+        color: #f9fafb;
+        border-radius: 36px;
+        padding: 32px 24px 36px;
+        box-shadow:
+          0 32px 70px rgba(15, 23, 42, 0.35),
+          0 0 0 1px rgba(15, 23, 42, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;   /* center text */
+        align-items: center;  /* center button + content */
+        margin: 0 auto;       /* center the whole card */
+        max-width: 640px;
+      }
 
     @media (min-width: 768px) {
       .product-card {
