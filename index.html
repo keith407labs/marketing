@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Products made by Keith</title>
+  <title>Products by Keith</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Lexend font -->
@@ -18,7 +18,7 @@
       --button: #2563eb;
       --button-hover: #1d4ed8;
       --button-text: #ffffff;
-      --card-bg: #0b1015;
+      --card-bg: #ffffff;
     }
 
     * {
@@ -43,10 +43,22 @@
       max-width: 1040px;
     }
 
+    /* Page header */
+    .page-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(32px, 4vw, 40px);
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+
     .hero-card {
-      background: #ffffff;
+      background: var(--card-bg);
       border-radius: 40px;
-      padding: 72px 24px;
+      padding: 40px 24px 48px;
       box-shadow:
         0 40px 70px rgba(15, 23, 42, 0.18),
         0 0 0 1px rgba(15, 23, 42, 0.03);
@@ -58,44 +70,23 @@
 
     @media (min-width: 768px) {
       .hero-card {
-        padding: 88px 72px 96px;
+        padding: 48px 72px 56px;
       }
     }
 
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-subtle);
-      background: #f1f5f9;
-      margin-bottom: 22px;
-    }
-
-    .tag-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    h1 {
-      font-size: clamp(40px, 6vw, 60px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      font-weight: 700;
-      margin-bottom: 16px;
+    .hero-title {
+      font-size: clamp(26px, 3.2vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+      margin-bottom: 12px;
     }
 
     .subtitle {
       font-size: 18px;
       line-height: 1.5;
       color: var(--text-subtle);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       max-width: 640px;
     }
 
@@ -146,12 +137,15 @@
 </head>
 <body>
   <main class="shell">
-    <section class="hero-card" aria-labelledby="products-heading">
-      <h1 id="products-heading">Products made by Keith</h1>
+    <header class="page-header">
+      <h1>Products by Keith</h1>
+    </header>
 
-      <!-- Minimal copy, Loom-style -->
+    <section class="hero-card" aria-labelledby="qva-heading">
+      <h2 id="qva-heading" class="hero-title">Quick Voice Assistant</h2>
+
       <p class="subtitle">
-        Simple things that solve real user problems with AI.
+        Add data to Quickbase using your voice.
       </p>
 
       <a
