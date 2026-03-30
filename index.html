@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Products by 407 Labs</title>
+  <title>407 Labs — AI Consulting for Small Business</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="407 Labs helps small business owners adopt AI into everyday workflows to become more productive." />
 
+  <!-- Lexend font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Changed bg to transparent so the neon background shows through */
-      --bg: transparent; 
-      --text-main: #020617;
-      --text-subtle: #4b5563;
-      --button: #2563eb;
-      --button-hover: #1d4ed8;
-      --button-text: #ffffff;
-      --card-bg: #020617;
+      --bg: #e8e6dc;
+      --bg-light: #f5f4ed;
+      --text-main: #141413;
+      --text-secondary: #30302e;
+      --text-muted: #5c5c58;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --accent-text: #ffffff;
+      --card-bg: #f5f4ed;
+      --card-border: rgba(194, 192, 182, 0.4);
+      --nav-bg: rgba(232, 230, 220, 0.92);
     }
 
     * {
@@ -27,118 +32,378 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      min-height: 100vh;
       font-family: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text-main);
+      line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    /* NAVIGATION */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: background 0.15s ease, color 0.15s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a:hover {
+      background: rgba(194, 192, 182, 0.3);
+      color: var(--text-main);
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      min-height: 44px;
+      transition: background 0.15s ease;
+    }
+
+    .nav-cta a:hover {
+      background: var(--accent-hover);
+    }
+
+    /* HAMBURGER */
+
+    .hamburger {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 16px;
-      /* Ensure content sits above background */
-      position: relative; 
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 8px;
+      transition: background 0.15s ease;
     }
+
+    .hamburger:hover {
+      background: rgba(194, 192, 182, 0.3);
+    }
+
+    .hamburger svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-main);
+    }
+
+    .hamburger .icon-close {
+      display: none;
+    }
+
+    .hamburger[aria-expanded="true"] .icon-open {
+      display: none;
+    }
+
+    .hamburger[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    /* MOBILE MENU */
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 99;
+      padding: 16px 20px 32px;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 17px;
+      font-weight: 500;
+      border-radius: 12px;
+      min-height: 48px;
+      transition: background 0.15s ease;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(194, 192, 182, 0.3);
+    }
+
+    .mobile-menu .mobile-cta {
+      display: block;
+      margin-top: 16px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      text-align: center;
+      font-weight: 500;
+      min-height: 48px;
+    }
+
+    .mobile-menu .mobile-cta:hover {
+      background: var(--accent-hover);
+    }
+
+    /* DESKTOP NAV */
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: block;
+      }
+
+      .hamburger {
+        display: none;
+      }
+    }
+
+    /* MAIN CONTENT */
 
     .shell {
       width: 100%;
       max-width: 1040px;
-      /* Ensure content is strictly above the background layers */
-      z-index: 10; 
-      position: relative;
-    }
-
-    /* NEON CHROME BACKGROUND STYLES */
-    .neon-background {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .neon-gradient-base {
-      position: absolute;
-      inset: 0;
-      /* from-slate-50 via-blue-50/50 to-white */
-      background: linear-gradient(to bottom, #f8fafc, rgba(239, 246, 255, 0.5), #ffffff);
-    }
-
-    .neon-blob-top {
-      position: absolute;
-      left: 50%;
-      top: 40%;
-      height: 40rem;
-      width: 80rem;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      filter: blur(64px); /* blur-3xl */
-      opacity: 0.8;
-      background: radial-gradient(circle at 50% 50%, rgba(59,130,246,.15), rgba(34,211,238,.10), rgba(217,70,239,.05), transparent 60%);
-    }
-
-    .neon-blob-bottom {
-      position: absolute;
-      left: 50%;
-      top: 60%;
-      height: 30rem;
-      width: 50rem;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      filter: blur(64px); /* blur-3xl */
-      opacity: 0.6;
-      background: conic-gradient(from 180deg at 50% 50%, rgba(34,211,238,.15), rgba(99,102,241,.10), rgba(34,211,238,.15));
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-
-    .neon-noise {
-      position: absolute;
-      inset: 0;
-      opacity: 0.03;
-      mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 0.4; }
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     /* HERO SECTION */
 
     .hero {
-      font-size: 32px;
+      padding: 120px 0 64px;
       text-align: center;
-      margin-bottom: 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 20px;
     }
 
     .hero-title {
-      margin: 0; 
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 600px;
     }
 
     .hero-tagline {
-      font-size: 20px;
-      line-height: 1.5;
-      color: var(--text-subtle);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-secondary);
       max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
     }
 
-    /* PRODUCT CARD */
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      min-height: 48px;
+      margin-top: 8px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .hero-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .hero-cta:active {
+      transform: translateY(0);
+    }
+
+    .hero-cta:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 140px 0 80px;
+      }
+
+      .hero-title {
+        font-size: 52px;
+        max-width: 720px;
+      }
+
+      .hero-tagline {
+        font-size: 20px;
+      }
+    }
+
+    /* VALUE PROPS */
+
+    .values {
+      padding: 0 0 64px;
+    }
+
+    .values-heading {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .value-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px 24px;
+    }
+
+    .value-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(217, 119, 87, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .value-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .value-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .value-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    @media (min-width: 768px) {
+      .values {
+        padding: 0 0 80px;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .value-card {
+        padding: 32px 28px;
+      }
+    }
+
+    /* PRODUCT SPOTLIGHT */
+
+    .spotlight {
+      padding: 0 0 64px;
+    }
 
     .product-card {
-      background: var(--card-bg);
-      color: #f9fafb;
-      border-radius: 36px;
+      background: var(--text-main);
+      color: #f5f4ed;
+      border-radius: 24px;
       padding: 32px 24px 36px;
-      box-shadow:
-        0 32px 70px rgba(15, 23, 42, 0.35),
-        0 0 0 1px rgba(15, 23, 42, 0.6);
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -147,13 +412,14 @@
       margin: 0 auto;
       max-width: 640px;
       width: 100%;
-      margin: 0 auto 24px;
     }
 
-    @media (min-width: 768px) {
-      .product-card {
-        padding: 32px 40px 40px;
-      }
+    .product-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
     }
 
     .product-name {
@@ -164,7 +430,7 @@
 
     .product-description {
       font-size: 16px;
-      color: #e5e7eb;
+      color: rgba(245, 244, 237, 0.7);
       max-width: 420px;
     }
 
@@ -178,22 +444,20 @@
       justify-content: center;
       padding: 12px 26px;
       border-radius: 999px;
-      background: var(--button);
-      color: var(--button-text);
+      background: var(--accent);
+      color: var(--accent-text);
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      box-shadow: none; 
-      transition:
-        background 0.15s ease-out,
-        transform 0.15s ease-out;
+      min-height: 44px;
+      transition: background 0.15s ease-out, transform 0.15s ease-out;
       white-space: nowrap;
     }
 
     .primary-btn:hover {
-      background: var(--button-hover);
+      background: var(--accent-hover);
       transform: translateY(-1px);
     }
 
@@ -202,76 +466,288 @@
     }
 
     .primary-btn:focus-visible {
-      outline: 2px solid #93c5fd;
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
 
-    footer {
-      margin-top: 28px;
+    @media (min-width: 768px) {
+      .product-card {
+        padding: 40px 40px 44px;
+        border-radius: 28px;
+      }
+    }
+
+    /* CTA SECTION */
+
+    .cta-section {
+      padding: 0 0 64px;
       text-align: center;
-      font-size: 11px;
-      color: #6b7280;
+    }
+
+    .cta-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      min-height: 48px;
+      margin-top: 4px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .cta-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 768px) {
+      .cta-box {
+        padding: 56px 40px;
+      }
+
+      .cta-title {
+        font-size: 28px;
+      }
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 32px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--card-border);
     }
   </style>
 </head>
 <body>
-  
-  <div class="neon-background">
-    <div class="neon-gradient-base"></div>
-    
-    <div class="neon-blob-top"></div>
-    
-    <div class="neon-blob-bottom"></div>
-    
-    <div class="neon-noise"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="407 Labs home">
+        <!-- Translucent Basketball Logo -->
+        <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="ball-glow" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="#f5f4ed" stop-opacity="0.95"/>
+              <stop offset="40%" stop-color="#e8e6dc" stop-opacity="0.8"/>
+              <stop offset="70%" stop-color="#d97757" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#c4613f" stop-opacity="0.6"/>
+            </radialGradient>
+            <radialGradient id="ball-highlight" cx="30%" cy="25%" r="40%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="seam-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#c4613f" stop-opacity="0.6"/>
+              <stop offset="50%" stop-color="#d97757" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#c4613f" stop-opacity="0.6"/>
+            </linearGradient>
+            <filter id="ball-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+              <feOffset dx="0" dy="2"/>
+              <feComposite in2="SourceAlpha" operator="out"/>
+              <feColorMatrix values="0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.25 0"/>
+              <feBlend in2="SourceGraphic"/>
+            </filter>
+          </defs>
+          <!-- Shadow/glow behind ball -->
+          <circle cx="50" cy="52" r="42" fill="rgba(20,20,19,0.08)"/>
+          <!-- Main sphere -->
+          <circle cx="50" cy="50" r="42" fill="url(#ball-glow)" filter="url(#ball-shadow)"/>
+          <!-- Basketball seams - horizontal -->
+          <path d="M8 50 Q30 42, 50 50 Q70 58, 92 50" stroke="url(#seam-gradient)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <!-- Basketball seams - vertical -->
+          <path d="M50 8 Q42 30, 50 50 Q58 70, 50 92" stroke="url(#seam-gradient)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <!-- Basketball seams - left curve -->
+          <path d="M28 12 Q18 30, 16 50 Q18 70, 28 88" stroke="url(#seam-gradient)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <!-- Basketball seams - right curve -->
+          <path d="M72 12 Q82 30, 84 50 Q82 70, 72 88" stroke="url(#seam-gradient)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <!-- Glass highlight -->
+          <circle cx="50" cy="50" r="42" fill="url(#ball-highlight)"/>
+          <!-- Top specular highlight -->
+          <ellipse cx="38" cy="32" rx="16" ry="10" fill="white" opacity="0.18"/>
+          <!-- Rim edge -->
+          <circle cx="50" cy="50" r="42" stroke="rgba(194,192,182,0.4)" stroke-width="1" fill="none"/>
+        </svg>
+        <span class="nav-logo-text">407 Labs</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="mailto:keith@407labs.com">Get in Touch</a>
+      </div>
+
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="6" y1="18" x2="18" y2="6"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#product" class="mobile-link">Product</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="mailto:keith@407labs.com" class="mobile-cta">Get in Touch</a>
   </div>
 
   <main class="shell">
-    <section class="hero" aria-label="Products overview">
-      <h1 class="hero-title">Products</h1>
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <h1 class="hero-title">AI that works for your business, not the other way around</h1>
+      <p class="hero-tagline">
+        I help small business owners bring AI into their everyday workflows — so you can spend less time on busywork and more time growing.
+      </p>
+      <a href="mailto:keith@407labs.com" class="hero-cta">Book a Free Consultation</a>
     </section>
 
-    <section class="product-card" aria-labelledby="qva-heading">
-      <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
-      <p class="product-description">
-        Create Quickbase records with natural speech. QVA turns your team’s voice into structured data, supercharging productivity and saving hours of desk time.
-      </p>
-      <div class="product-actions">
-        <a
-          class="primary-btn"
-          href="https://www.tryqva.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Try QVA
-        </a>
+    <!-- VALUE PROPS -->
+    <section id="services" class="values" aria-label="Services">
+      <p class="values-heading">How I Help</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Workflow Automation</h3>
+          <p class="value-desc">Identify repetitive tasks in your day-to-day and set up AI tools that handle them — from data entry to customer follow-ups.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Hands-On Training</h3>
+          <p class="value-desc">Learn how to use AI tools confidently — no jargon, no fluff. Just practical sessions tailored to what your team actually does.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Custom AI Solutions</h3>
+          <p class="value-desc">Need something purpose-built? I design and develop AI-powered tools that fit your specific business challenges.</p>
+        </div>
       </div>
     </section>
 
-    <section class="product-card" aria-labelledby="pvl-heading">
-      <h2 id="pvl-heading" class="product-name">Portfolio Valuation Lab</h2>
-      <p class="product-description">
-        Bid smart on Chapter 13 bankruptcy portfolios. PVL shows your underwriting team the actual history of Trustee disbursements for a specific creditor.
-      </p>
-      <div class="product-actions">
-        <a
-          class="primary-btn"
-          href="https://www.13pv.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit PVL
-        </a>
+    <!-- PRODUCT SPOTLIGHT -->
+    <section id="product" class="spotlight" aria-labelledby="qva-heading">
+      <div class="product-card">
+        <span class="product-label">Built by 407 Labs</span>
+        <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
+        <p class="product-description">
+          Add data to Quickbase using your voice. A faster, hands-free way for field teams to log information on the go.
+        </p>
+        <div class="product-actions">
+          <a
+            class="primary-btn"
+            href="https://tryqva.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Try QVA
+          </a>
+        </div>
       </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> | 407 Labs
-    </footer>
+    <!-- CTA SECTION -->
+    <section id="contact" class="cta-section" aria-label="Get started">
+      <div class="cta-box">
+        <h2 class="cta-title">Ready to put AI to work?</h2>
+        <p class="cta-desc">Let's talk about where AI can save you time and make your business run smoother. No pressure, no commitment.</p>
+        <a href="mailto:keith@407labs.com" class="cta-btn">Start the Conversation</a>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    © <span id="year"></span> 407 Labs
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburger.addEventListener("click", function () {
+      const expanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", !expanded);
+      mobileMenu.classList.toggle("open");
+      document.body.style.overflow = expanded ? "" : "hidden";
+    });
+
+    // Close mobile menu when a link is tapped
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        hamburger.setAttribute("aria-expanded", "false");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      });
+    });
   </script>
 </body>
 </html>
