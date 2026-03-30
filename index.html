@@ -399,6 +399,14 @@
       padding: 0 0 64px;
     }
 
+    .products-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
     .product-card {
       background: var(--text-main);
       color: #f5f4ed;
@@ -409,8 +417,6 @@
       gap: 14px;
       text-align: center;
       align-items: center;
-      margin: 0 auto;
-      max-width: 640px;
       width: 100%;
     }
 
@@ -564,57 +570,20 @@
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="#" class="nav-logo" aria-label="407 Labs home">
-        <!-- Translucent Basketball Logo -->
-        <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <radialGradient id="ball-glow" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#f5f4ed" stop-opacity="0.95"/>
-              <stop offset="40%" stop-color="#e8e6dc" stop-opacity="0.8"/>
-              <stop offset="70%" stop-color="#d97757" stop-opacity="0.45"/>
-              <stop offset="100%" stop-color="#c4613f" stop-opacity="0.6"/>
-            </radialGradient>
-            <radialGradient id="ball-highlight" cx="30%" cy="25%" r="40%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="seam-gradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#c4613f" stop-opacity="0.6"/>
-              <stop offset="50%" stop-color="#d97757" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#c4613f" stop-opacity="0.6"/>
-            </linearGradient>
-            <filter id="ball-shadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-              <feOffset dx="0" dy="2"/>
-              <feComposite in2="SourceAlpha" operator="out"/>
-              <feColorMatrix values="0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.25 0"/>
-              <feBlend in2="SourceGraphic"/>
-            </filter>
-          </defs>
-          <!-- Shadow/glow behind ball -->
-          <circle cx="50" cy="52" r="42" fill="rgba(20,20,19,0.08)"/>
-          <!-- Main sphere -->
-          <circle cx="50" cy="50" r="42" fill="url(#ball-glow)" filter="url(#ball-shadow)"/>
-          <!-- Basketball seams - horizontal -->
-          <path d="M8 50 Q30 42, 50 50 Q70 58, 92 50" stroke="url(#seam-gradient)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <!-- Basketball seams - vertical -->
-          <path d="M50 8 Q42 30, 50 50 Q58 70, 50 92" stroke="url(#seam-gradient)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <!-- Basketball seams - left curve -->
-          <path d="M28 12 Q18 30, 16 50 Q18 70, 28 88" stroke="url(#seam-gradient)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-          <!-- Basketball seams - right curve -->
-          <path d="M72 12 Q82 30, 84 50 Q82 70, 72 88" stroke="url(#seam-gradient)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-          <!-- Glass highlight -->
-          <circle cx="50" cy="50" r="42" fill="url(#ball-highlight)"/>
-          <!-- Top specular highlight -->
-          <ellipse cx="38" cy="32" rx="16" ry="10" fill="white" opacity="0.18"/>
-          <!-- Rim edge -->
-          <circle cx="50" cy="50" r="42" stroke="rgba(194,192,182,0.4)" stroke-width="1" fill="none"/>
+        <!-- Basketball Icon -->
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" stroke="#d97757" stroke-width="2" fill="none"/>
+          <path d="M2 16h28" stroke="#d97757" stroke-width="1.5"/>
+          <path d="M16 2v28" stroke="#d97757" stroke-width="1.5"/>
+          <path d="M8.5 2.5C6.5 7 6 11.5 6 16s.5 9 2.5 13.5" stroke="#d97757" stroke-width="1.5" fill="none"/>
+          <path d="M23.5 2.5C25.5 7 26 11.5 26 16s-.5 9-2.5 13.5" stroke="#d97757" stroke-width="1.5" fill="none"/>
         </svg>
         <span class="nav-logo-text">407 Labs</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#product">Product</a></li>
+        <li><a href="#products">Products</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -639,7 +608,7 @@
   <!-- MOBILE MENU -->
   <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
     <a href="#services" class="mobile-link">Services</a>
-    <a href="#product" class="mobile-link">Product</a>
+    <a href="#products" class="mobile-link">Products</a>
     <a href="#contact" class="mobile-link">Contact</a>
     <a href="mailto:keith@407labs.com" class="mobile-cta">Get in Touch</a>
   </div>
@@ -691,23 +660,43 @@
       </div>
     </section>
 
-    <!-- PRODUCT SPOTLIGHT -->
-    <section id="product" class="spotlight" aria-labelledby="qva-heading">
-      <div class="product-card">
-        <span class="product-label">Built by 407 Labs</span>
-        <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
-        <p class="product-description">
-          Add data to Quickbase using your voice. A faster, hands-free way for field teams to log information on the go.
-        </p>
-        <div class="product-actions">
-          <a
-            class="primary-btn"
-            href="https://tryqva.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Try QVA
-          </a>
+    <!-- PRODUCTS -->
+    <section id="products" class="spotlight" aria-label="Products">
+      <p class="values-heading">Products</p>
+      <div class="products-grid">
+        <div class="product-card" aria-labelledby="qva-heading">
+          <span class="product-label">Built by 407 Labs</span>
+          <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
+          <p class="product-description">
+            Create Quickbase records with natural speech. QVA turns your team's voice into structured data, supercharging productivity and saving hours of desk time.
+          </p>
+          <div class="product-actions">
+            <a
+              class="primary-btn"
+              href="https://www.tryqva.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try QVA
+            </a>
+          </div>
+        </div>
+        <div class="product-card" aria-labelledby="pvl-heading">
+          <span class="product-label">Built by 407 Labs</span>
+          <h2 id="pvl-heading" class="product-name">Portfolio Valuation Lab</h2>
+          <p class="product-description">
+            Bid smart on Chapter 13 bankruptcy portfolios. PVL shows your underwriting team the actual history of Trustee disbursements for a specific creditor.
+          </p>
+          <div class="product-actions">
+            <a
+              class="primary-btn"
+              href="https://www.13pv.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit PVL
+            </a>
+          </div>
         </div>
       </div>
     </section>
