@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&amp;display=swap');</style>
+  </defs>
   <rect width="1200" height="630" fill="#e8e6dc"/>
 
   <!-- Volleyball icon (centered: 576 + 24 = 600) -->
@@ -12,11 +15,11 @@
   </g>
 
   <!-- 407 Labs -->
-  <text x="600" y="280" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="48" font-weight="700" fill="#141413" letter-spacing="-1">407 Labs</text>
+  <text x="600" y="280" text-anchor="middle" font-family="'Lexend', system-ui, sans-serif" font-size="48" font-weight="700" fill="#141413" letter-spacing="-1">407 Labs</text>
 
   <!-- Divider line -->
   <line x1="560" y1="308" x2="640" y2="308" stroke="#d97757" stroke-width="3" stroke-linecap="round"/>
 
   <!-- Tagline -->
-  <text x="600" y="355" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="500" fill="#30302e">I set up AI tools for your small business.</text>
+  <text x="600" y="355" text-anchor="middle" font-family="'Lexend', system-ui, sans-serif" font-size="28" font-weight="500" fill="#30302e">I set up AI tools for your small business.</text>
 </svg>
