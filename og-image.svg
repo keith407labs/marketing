@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#e8e6dc"/>
 
-  <!-- Volleyball icon -->
-  <g transform="translate(556, 180)" fill="none" stroke="#d97757" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Volleyball icon (centered: 576 + 24 = 600) -->
+  <g transform="translate(576, 175)" fill="none" stroke="#d97757" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <path d="M22.2 14.2a33.1 33.1 0 0 1 21.8 8"/>
     <path d="M24 24a25.2 25.2 0 0 1-17.4 10"/>
     <path d="M33.6 27.2a33.1 33.1 0 0 1-18 15"/>
@@ -12,11 +12,11 @@
   </g>
 
   <!-- 407 Labs -->
-  <text x="600" y="290" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="48" font-weight="700" fill="#141413" letter-spacing="-1">407 Labs</text>
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="48" font-weight="700" fill="#141413" letter-spacing="-1">407 Labs</text>
 
   <!-- Divider line -->
-  <line x1="560" y1="320" x2="640" y2="320" stroke="#d97757" stroke-width="3" stroke-linecap="round"/>
+  <line x1="560" y1="308" x2="640" y2="308" stroke="#d97757" stroke-width="3" stroke-linecap="round"/>
 
   <!-- Tagline -->
-  <text x="600" y="370" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="500" fill="#30302e">Put AI to work for your small business.</text>
+  <text x="600" y="355" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="500" fill="#30302e">I set up AI tools for your small business.</text>
 </svg>
