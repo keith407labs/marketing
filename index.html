@@ -397,6 +397,45 @@
       gap: 20px;
     }
 
+    /* STATS BAR */
+
+    .stats-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 48px;
+    }
+
+    .stats-bar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    .stats-bar-item + .stats-bar-item {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+    }
+
+    .stats-bar-value {
+      font-family: var(--font-sans);
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .stats-bar-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+    }
+
+    /* CASE CARDS */
+
     .case-card {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -404,7 +443,19 @@
       padding: 28px 24px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .case-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .case-card-client {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
     }
 
     .case-card-tag {
@@ -437,6 +488,59 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
+    .case-card-expand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 4px;
+    }
+
+    .case-card-expand svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .case-card.expanded .case-card-expand svg {
+      transform: rotate(180deg);
+    }
+
+    .case-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .case-card.expanded .case-card-body {
+      max-height: 600px;
+    }
+
+    .case-card-body-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .case-card-body-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 6px;
+    }
+
+    .case-card-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
     @media (min-width: 768px) {
       .case-studies {
         padding: 100px 0;
@@ -445,6 +549,25 @@
       .case-studies-headline {
         font-size: 44px;
         margin-bottom: 56px;
+      }
+
+      .stats-bar {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .stats-bar-item {
+        padding: 0 40px;
+      }
+
+      .stats-bar-item + .stats-bar-item {
+        border-top: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        width: auto;
+      }
+
+      .stats-bar-value {
+        font-size: 28px;
       }
 
       .case-studies-grid {
@@ -766,24 +889,94 @@
       <div class="case-studies">
         <p class="section-label section-label--inverse">Case Studies</p>
         <h2 class="case-studies-headline">Real Results for Real Businesses</h2>
+
+        <div class="stats-bar">
+          <div class="stats-bar-item">
+            <span class="stats-bar-value">3 AI systems deployed</span>
+            <span class="stats-bar-label">Production pipelines in use</span>
+          </div>
+          <div class="stats-bar-item">
+            <span class="stats-bar-value">Multi-day cycles → same day</span>
+            <span class="stats-bar-label">Analyst time reclaimed</span>
+          </div>
+          <div class="stats-bar-item">
+            <span class="stats-bar-value">Manual review eliminated</span>
+            <span class="stats-bar-label">End-to-end automation</span>
+          </div>
+        </div>
+
         <div class="case-studies-grid">
           <div class="case-card">
+            <span class="case-card-client">Tribute Capital Partners</span>
             <span class="case-card-tag">Portfolio Operations</span>
             <h3 class="case-card-title">Portfolio Scrubbing Automation</h3>
             <p class="case-card-stat">Multi-day → same day</p>
-            <p class="case-card-desc">Replaced multi-day analyst cycles at a boutique PE firm with an AI pipeline that scrubs, validates, and generates investor-facing portfolio reports—all delivered same day.</p>
+            <p class="case-card-desc">AI pipeline that scrubs, validates, and generates investor-facing portfolio reports—delivered same day.</p>
+            <span class="case-card-expand">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <div class="case-card-body">
+              <div class="case-card-body-inner">
+                <div>
+                  <div class="case-card-body-label">The Problem</div>
+                  <p>Analysts at Tribute Capital spent multiple days per acquisition manually scrubbing portfolio data—validating claims, cross-referencing records, and compiling investor-facing reports in spreadsheets.</p>
+                </div>
+                <div>
+                  <div class="case-card-body-label">What We Built</div>
+                  <p>An AI pipeline that ingests raw portfolio data, validates against source records, flags anomalies, and generates formatted investor-ready reports automatically.</p>
+                </div>
+                <div>
+                  <div class="case-card-body-label">The Result</div>
+                  <p>What previously took analysts multiple days now completes same-day. Freed the team to focus on deal evaluation instead of data wrangling.</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="case-card">
+            <span class="case-card-client">Tribute Capital Partners</span>
             <span class="case-card-tag">Legal &amp; Compliance</span>
             <h3 class="case-card-title">Court Media Reconciliation</h3>
             <p class="case-card-stat">Manual review eliminated</p>
-            <p class="case-card-desc">AI reconciles court media—proofs of claim, plans, and orders—against acquired data tapes, flagging discrepancies that previously required line-by-line manual review.</p>
+            <p class="case-card-desc">AI reconciles court media against acquired data tapes, flagging discrepancies automatically.</p>
+            <span class="case-card-expand">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <div class="case-card-body">
+              <div class="case-card-body-inner">
+                <div>
+                  <div class="case-card-body-label">The Problem</div>
+                  <p>After acquiring distressed debt portfolios, Tribute's team had to manually reconcile court media—proofs of claim, court orders, and plans—against their acquired data tapes, line by line.</p>
+                </div>
+                <div>
+                  <div class="case-card-body-label">What We Built</div>
+                  <p>An AI system that ingests court documents and data tapes, extracts structured fields, and automatically flags discrepancies—routing only genuine edge cases to human reviewers.</p>
+                </div>
+                <div>
+                  <div class="case-card-body-label">The Result</div>
+                  <p>Eliminated line-by-line manual review entirely. Discrepancies that took days to surface are now flagged automatically.</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="case-card">
+            <span class="case-card-client">Tribute Capital Partners</span>
             <span class="case-card-tag">Financial Operations</span>
             <h3 class="case-card-title">Bank-Deposit Reconciliation</h3>
             <p class="case-card-stat">Fully automated matching</p>
-            <p class="case-card-desc">Matches incoming deposits and transactions against debtor payment histories from trustee disbursement records and the NDC API—replacing spreadsheet-based reconciliation.</p>
+            <p class="case-card-desc">Matches deposits against debtor payment histories from trustee records and the NDC API.</p>
+            <span class="case-card-expand">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <div class="case-card-body">
+              <div class="case-card-body-inner">
+                <div>
+                  <div class="case-card-body-label">The Problem</div>
+                  <p>Reconciling incoming bank deposits against debtor payment histories required analysts to manually cross-reference spreadsheets against trustee disbursement records and NDC API data.</p>
+                </div>
+                <div>
+                  <div class="case-card-body-label">What We Built</div>
+                  <p>An automated pipeline that pulls deposit data, matches against debtor payment histories from trustee records and the NDC API, and surfaces unmatched items for review.</p>
+                </div>
+                <div>
+                  <div class="case-card-body-label">The Result</div>
+                  <p>Replaced spreadsheet-based reconciliation entirely. Analysts now review exceptions only—not every transaction.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -888,6 +1081,13 @@
         hamburger.setAttribute("aria-expanded", "false");
         mobileMenu.classList.remove("open");
         document.body.style.overflow = "";
+      });
+    });
+
+    // Case card expand/collapse
+    document.querySelectorAll(".case-card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        this.classList.toggle("expanded");
       });
     });
   </script>
