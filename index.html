@@ -24,24 +24,26 @@
   <meta name="twitter:description" content="I set up AI tools that take care of the busywork, giving you your time back to focus on growth." />
   <meta name="twitter:image" content="https://407labs.com/og-image.png" />
 
-  <!-- Lexend font -->
+  <!-- Fonts: DM Serif Display + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #e8e6dc;
-      --bg-light: #f5f4ed;
-      --text-main: #141413;
-      --text-secondary: #30302e;
-      --text-muted: #5c5c58;
-      --accent: #d97757;
-      --accent-hover: #c4613f;
-      --accent-text: #ffffff;
-      --card-bg: #f5f4ed;
-      --card-border: rgba(194, 192, 182, 0.4);
-      --nav-bg: rgba(232, 230, 220, 0.92);
+      --bg: #ffffff;
+      --bg-dark: #0a0a0a;
+      --bg-dark-alt: #141413;
+      --text-main: #0a0a0a;
+      --text-secondary: #404040;
+      --text-muted: #737373;
+      --text-inverse: #f5f5f5;
+      --accent: #c45a3c;
+      --accent-hover: #a84830;
+      --card-border: rgba(0, 0, 0, 0.06);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * {
@@ -56,12 +58,21 @@
     }
 
     body {
-      font-family: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.6;
       -webkit-text-size-adjust: 100%;
       overflow-x: hidden;
+    }
+
+    /* LAYOUT */
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     /* NAVIGATION */
@@ -79,7 +90,7 @@
     }
 
     .nav-inner {
-      max-width: 1040px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 20px;
       display: flex;
@@ -97,6 +108,7 @@
     }
 
     .nav-logo-text {
+      font-family: var(--font-sans);
       font-size: 18px;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -109,7 +121,8 @@
     }
 
     .nav-links a {
-      display: block;
+      display: flex;
+      align-items: center;
       padding: 10px 18px;
       text-decoration: none;
       color: var(--text-secondary);
@@ -118,12 +131,10 @@
       border-radius: 8px;
       transition: background 0.15s ease, color 0.15s ease;
       min-height: 44px;
-      display: flex;
-      align-items: center;
     }
 
     .nav-links a:hover {
-      background: rgba(194, 192, 182, 0.3);
+      background: rgba(0, 0, 0, 0.04);
       color: var(--text-main);
     }
 
@@ -137,8 +148,8 @@
       justify-content: center;
       padding: 10px 22px;
       border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-text);
+      background: var(--text-main);
+      color: var(--bg);
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
@@ -147,7 +158,7 @@
     }
 
     .nav-cta a:hover {
-      background: var(--accent-hover);
+      background: #1a1a1a;
     }
 
     /* HAMBURGER */
@@ -167,7 +178,7 @@
     }
 
     .hamburger:hover {
-      background: rgba(194, 192, 182, 0.3);
+      background: rgba(0, 0, 0, 0.04);
     }
 
     .hamburger svg {
@@ -223,7 +234,7 @@
     }
 
     .mobile-menu a:hover {
-      background: rgba(194, 192, 182, 0.3);
+      background: rgba(0, 0, 0, 0.04);
     }
 
     .mobile-menu .mobile-cta {
@@ -231,15 +242,15 @@
       margin-top: 16px;
       padding: 14px 24px;
       border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-text);
+      background: var(--text-main);
+      color: var(--bg);
       text-align: center;
       font-weight: 500;
       min-height: 48px;
     }
 
     .mobile-menu .mobile-cta:hover {
-      background: var(--accent-hover);
+      background: #1a1a1a;
     }
 
     /* DESKTOP NAV */
@@ -258,19 +269,31 @@
       }
     }
 
-    /* MAIN CONTENT */
+    /* SECTION LABEL */
 
-    .shell {
-      width: 100%;
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-label--inverse {
+      color: rgba(255, 255, 255, 0.5);
     }
 
     /* HERO SECTION */
 
+    .hero-section {
+      background: var(--bg);
+    }
+
     .hero {
-      padding: 120px 0 64px;
+      padding: 160px 0 80px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -278,16 +301,26 @@
       gap: 20px;
     }
 
+    .hero-label {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
     .hero-title {
-      font-size: 36px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
       line-height: 1.15;
-      max-width: 600px;
+      max-width: 700px;
     }
 
     .hero-tagline {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.6;
       color: var(--text-secondary);
       max-width: 520px;
@@ -299,8 +332,8 @@
       justify-content: center;
       padding: 14px 32px;
       border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-text);
+      background: var(--text-main);
+      color: var(--bg);
       font-size: 16px;
       font-weight: 500;
       text-decoration: none;
@@ -310,7 +343,7 @@
     }
 
     .hero-cta:hover {
-      background: var(--accent-hover);
+      background: #1a1a1a;
       transform: translateY(-1px);
     }
 
@@ -319,103 +352,120 @@
     }
 
     .hero-cta:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--text-main);
       outline-offset: 3px;
     }
 
     @media (min-width: 768px) {
       .hero {
-        padding: 140px 0 80px;
+        padding: 180px 0 100px;
       }
 
       .hero-title {
-        font-size: 52px;
-        max-width: 720px;
+        font-size: 72px;
+        max-width: 820px;
       }
 
       .hero-tagline {
-        font-size: 20px;
+        font-size: 19px;
       }
     }
 
-    /* VALUE PROPS */
+    /* CASE STUDIES SECTION */
 
-    .values {
-      padding: 0 0 64px;
+    .case-studies-section {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
     }
 
-    .values-heading {
+    .case-studies {
+      padding: 80px 0;
+    }
+
+    .case-studies-headline {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 400;
       text-align: center;
-      font-size: 14px;
+      margin-bottom: 48px;
+      line-height: 1.2;
+    }
+
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .case-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .case-card-tag {
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 32px;
     }
 
-    .values-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+    .case-card-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
     }
 
-    .value-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 28px 24px;
-    }
-
-    .value-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(217, 119, 87, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-
-    .value-icon svg {
-      width: 22px;
-      height: 22px;
-      color: var(--accent);
-    }
-
-    .value-title {
-      font-size: 18px;
-      font-weight: 600;
+    .case-card-stat {
+      font-family: var(--font-sans);
+      font-size: 28px;
+      font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 8px;
+      color: #ffffff;
     }
 
-    .value-desc {
+    .case-card-desc {
       font-size: 15px;
       line-height: 1.6;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     @media (min-width: 768px) {
-      .values {
-        padding: 0 0 80px;
+      .case-studies {
+        padding: 100px 0;
       }
 
-      .values-grid {
+      .case-studies-headline {
+        font-size: 44px;
+        margin-bottom: 56px;
+      }
+
+      .case-studies-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        gap: 24px;
       }
 
-      .value-card {
+      .case-card {
         padding: 32px 28px;
       }
     }
 
-    /* PRODUCT SPOTLIGHT */
+    /* PRODUCTS SECTION */
+
+    .products-section {
+      background: var(--bg-dark-alt);
+      color: var(--text-inverse);
+    }
 
     .spotlight {
-      padding: 0 0 64px;
+      padding: 80px 0;
     }
 
     .products-grid {
@@ -427,9 +477,9 @@
     }
 
     .product-card {
-      background: var(--text-main);
-      color: #f5f4ed;
-      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
       padding: 32px 24px 36px;
       display: flex;
       flex-direction: column;
@@ -441,71 +491,87 @@
 
     .product-label {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--accent);
+      color: rgba(255, 255, 255, 0.4);
     }
 
     .product-name {
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
     }
 
     .product-description {
       font-size: 16px;
-      color: rgba(245, 244, 237, 0.7);
+      color: rgba(255, 255, 255, 0.6);
       max-width: 420px;
+      line-height: 1.6;
     }
 
     .product-actions {
       margin-top: 12px;
     }
 
-    .primary-btn {
+    .ghost-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 12px 26px;
       border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-text);
+      background: transparent;
+      color: var(--text-inverse);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-family: var(--font-sans);
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
-      border: none;
       cursor: pointer;
       min-height: 44px;
-      transition: background 0.15s ease-out, transform 0.15s ease-out;
+      transition: background 0.15s ease-out, border-color 0.15s ease-out, transform 0.15s ease-out;
       white-space: nowrap;
     }
 
-    .primary-btn:hover {
-      background: var(--accent-hover);
+    .ghost-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.5);
       transform: translateY(-1px);
     }
 
-    .primary-btn:active {
+    .ghost-btn:active {
       transform: translateY(0);
     }
 
-    .primary-btn:focus-visible {
-      outline: 2px solid var(--accent);
+    .ghost-btn:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
       outline-offset: 3px;
     }
 
     @media (min-width: 768px) {
+      .spotlight {
+        padding: 100px 0;
+      }
+
       .product-card {
         padding: 40px 40px 44px;
-        border-radius: 28px;
+        border-radius: 24px;
+      }
+
+      .product-name {
+        font-size: 32px;
       }
     }
 
     /* ABOUT SECTION */
 
+    .about-section {
+      background: var(--bg);
+    }
+
     .about {
-      padding: 0 0 64px;
+      padding: 80px 0;
     }
 
     .about-content {
@@ -532,7 +598,7 @@
 
     @media (min-width: 768px) {
       .about {
-        padding: 0 0 80px;
+        padding: 100px 0;
       }
 
       .about-content p {
@@ -546,32 +612,33 @@
 
     /* CTA SECTION */
 
-    .cta-section {
-      padding: 0 0 64px;
-      text-align: center;
+    .cta-outer {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
     }
 
-    .cta-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 40px 24px;
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
 
     .cta-title {
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
     }
 
     .cta-desc {
-      font-size: 16px;
-      color: var(--text-secondary);
-      max-width: 440px;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 480px;
+      line-height: 1.6;
     }
 
     .cta-btn {
@@ -580,8 +647,9 @@
       justify-content: center;
       padding: 14px 32px;
       border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-text);
+      background: #ffffff;
+      color: var(--bg-dark);
+      font-family: var(--font-sans);
       font-size: 16px;
       font-weight: 500;
       text-decoration: none;
@@ -591,7 +659,7 @@
     }
 
     .cta-btn:hover {
-      background: var(--accent-hover);
+      background: #f0f0f0;
       transform: translateY(-1px);
     }
 
@@ -600,28 +668,29 @@
     }
 
     .cta-btn:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid rgba(255, 255, 255, 0.5);
       outline-offset: 3px;
     }
 
     @media (min-width: 768px) {
-      .cta-box {
-        padding: 56px 40px;
+      .cta-section {
+        padding: 100px 0;
       }
 
       .cta-title {
-        font-size: 28px;
+        font-size: 48px;
       }
     }
 
     /* FOOTER */
 
     footer {
+      background: var(--bg-dark);
+      color: rgba(255, 255, 255, 0.4);
       padding: 32px 20px calc(32px + env(safe-area-inset-bottom, 0px));
       text-align: center;
       font-size: 13px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--card-border);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
   </style>
 </head>
@@ -632,7 +701,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo" aria-label="407 Labs home">
         <!-- Volleyball Icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d97757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4"/>
           <path d="M12 12a12.6 12.6 0 0 1-8.7 5"/>
           <path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5"/>
@@ -644,7 +713,7 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
+        <li><a href="#case-studies">Case Studies</a></li>
         <li><a href="#products">Products</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -670,124 +739,130 @@
 
   <!-- MOBILE MENU -->
   <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-    <a href="#services" class="mobile-link">Services</a>
+    <a href="#case-studies" class="mobile-link">Case Studies</a>
     <a href="#products" class="mobile-link">Products</a>
     <a href="#about" class="mobile-link">About</a>
     <a href="#contact" class="mobile-link">Contact</a>
     <a href="mailto:keith@407labs.com" class="mobile-cta">Get in Touch</a>
   </div>
 
-  <main class="shell">
-    <!-- HERO -->
-    <section class="hero" aria-label="Introduction">
-      <h1 class="hero-title">Put AI to work for your small business.</h1>
-      <p class="hero-tagline">
-        I set up AI tools that take care of the busywork, giving you your time back to focus on growth.
-      </p>
-      <a href="mailto:keith@407labs.com" class="hero-cta">Book a Free Consultation</a>
-    </section>
-
-    <!-- VALUE PROPS -->
-    <section id="services" class="values" aria-label="Services">
-      <p class="values-heading">How I Help</p>
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <h3 class="value-title">Workflow Automation</h3>
-          <p class="value-desc">Stop doing the same tasks over and over. I'll set up AI to handle your data entry, follow-ups, and more.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-          </div>
-          <h3 class="value-title">Hands-On Training</h3>
-          <p class="value-desc">Get your team comfortable with AI. No jargon, no fluff—just practical training focused on the tools you'll actually use.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h3 class="value-title">Custom AI Solutions</h3>
-          <p class="value-desc">Can't find the right tool off the shelf? I build custom AI solutions designed specifically to fix your unique problems.</p>
-        </div>
+  <!-- HERO -->
+  <section class="hero-section" aria-label="Introduction">
+    <div class="shell">
+      <div class="hero">
+        <span class="hero-label">AI Consulting</span>
+        <h1 class="hero-title">Custom AI systems for complex business operations.</h1>
+        <p class="hero-tagline">
+          I build production AI that replaces manual workflows—turning spreadsheets, PDFs, and analyst queues into fast, reliable, automated systems.
+        </p>
+        <a href="mailto:keith@407labs.com" class="hero-cta">Book a Free Consultation</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PRODUCTS -->
-    <section id="products" class="spotlight" aria-label="Products">
-      <p class="values-heading">Products</p>
-      <div class="products-grid">
-        <div class="product-card" aria-labelledby="qva-heading">
-          <span class="product-label">Built by 407 Labs</span>
-          <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
-          <p class="product-description">
-            Create Quickbase records with natural speech. QVA turns your team's voice into structured data, supercharging productivity and saving hours of desk time.
-          </p>
-          <div class="product-actions">
-            <a
-              class="primary-btn"
-              href="https://www.tryqva.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Try QVA
-            </a>
+  <!-- CASE STUDIES -->
+  <section id="case-studies" class="case-studies-section" aria-label="Case Studies">
+    <div class="shell">
+      <div class="case-studies">
+        <p class="section-label section-label--inverse">Case Studies</p>
+        <h2 class="case-studies-headline">Real Results for Real Businesses</h2>
+        <div class="case-studies-grid">
+          <div class="case-card">
+            <span class="case-card-tag">Portfolio Operations</span>
+            <h3 class="case-card-title">Portfolio Scrubbing Automation</h3>
+            <p class="case-card-stat">Multi-day → same day</p>
+            <p class="case-card-desc">Replaced multi-day analyst cycles at a boutique PE firm with an AI pipeline that scrubs, validates, and generates investor-facing portfolio reports—all delivered same day.</p>
           </div>
-        </div>
-        <div class="product-card" aria-labelledby="pvl-heading">
-          <span class="product-label">Built by 407 Labs</span>
-          <h2 id="pvl-heading" class="product-name">Portfolio Valuation Lab</h2>
-          <p class="product-description">
-            Bid smart on Chapter 13 bankruptcy portfolios. PVL shows your underwriting team the actual history of Trustee disbursements for a specific creditor.
-          </p>
-          <div class="product-actions">
-            <a
-              class="primary-btn"
-              href="https://www.13pv.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit PVL
-            </a>
+          <div class="case-card">
+            <span class="case-card-tag">Legal &amp; Compliance</span>
+            <h3 class="case-card-title">Court Media Reconciliation</h3>
+            <p class="case-card-stat">Manual review eliminated</p>
+            <p class="case-card-desc">AI reconciles court media—proofs of claim, plans, and orders—against acquired data tapes, flagging discrepancies that previously required line-by-line manual review.</p>
+          </div>
+          <div class="case-card">
+            <span class="case-card-tag">Financial Operations</span>
+            <h3 class="case-card-title">Bank-Deposit Reconciliation</h3>
+            <p class="case-card-stat">Fully automated matching</p>
+            <p class="case-card-desc">Matches incoming deposits and transactions against debtor payment histories from trustee disbursement records and the NDC API—replacing spreadsheet-based reconciliation.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="about" aria-label="About">
-      <p class="values-heading">About Me</p>
-      <div class="about-content">
-        <p>I've spent my career at the intersection of entrepreneurship, technology, and practical problem-solving for businesses.</p>
-        <p>Early on, I lived in South Africa, where I worked with small financial nonprofits to help them adopt technology and improve how they operated. That experience gave me a deep appreciation for resource constraints and the importance of simple, effective tools.</p>
-        <p>In 2010, I became part of the founding team behind Startup Weekend, working with aspiring entrepreneurs to turn ideas into real companies in just a few days. That experience inspired me to start building companies myself and to fully experience what it means to be a founder.</p>
-        <p>I went on to co-found an AI-powered virtual assistant platform for banks, which was ultimately acquired by Envestnet | Yodlee. During that journey, I developed a firsthand understanding of the challenges of running a business—from product development to organizing operations—and how critical access to top-tier developer talent is in bringing ambitious ideas to life.</p>
-        <p>Since then, I've worked closely with boutique private equity firms to modernize their operations. My work has focused on improving financial reporting, strengthening accounting systems, and implementing more efficient, tech-enabled processes that support better decision-making.</p>
-        <p>What excites me most today is the rapid evolution of AI. The tools now available are incredibly powerful—and for small business owners, they unlock the ability to operate with a level of leverage that simply wasn't possible before.</p>
-        <p>I'm a naturally curious person who enjoys understanding how things work and finding better ways to do them. If you're running a business and looking to simplify operations, save time, or unlock new capabilities through AI, I'd love to help.</p>
+  <!-- PRODUCTS -->
+  <section id="products" class="products-section" aria-label="Products">
+    <div class="shell">
+      <div class="spotlight">
+        <p class="section-label section-label--inverse">Products</p>
+        <div class="products-grid">
+          <div class="product-card" aria-labelledby="qva-heading">
+            <span class="product-label">Built by 407 Labs</span>
+            <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
+            <p class="product-description">
+              A voice-to-database pipeline that lets field teams create and update Quickbase records by speaking naturally. Nine independent defense layers ensure data integrity—no freeform LLM output ever hits your system.
+            </p>
+            <div class="product-actions">
+              <a
+                class="ghost-btn"
+                href="https://www.tryqva.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Try QVA
+              </a>
+            </div>
+          </div>
+          <div class="product-card" aria-labelledby="pvl-heading">
+            <span class="product-label">Built by 407 Labs</span>
+            <h2 id="pvl-heading" class="product-name">Portfolio Valuation Lab</h2>
+            <p class="product-description">
+              A full-stack Chapter 13 valuation engine for institutional debt buyers. PVL converts raw court and trustee data into investor-ready PDF memos with per-claim pricing, risk scoring, and bid guidance—powered by survival curve modeling across 93 federal districts.
+            </p>
+            <div class="product-actions">
+              <a
+                class="ghost-btn"
+                href="https://www.13pv.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit PVL
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA SECTION -->
-    <section id="contact" class="cta-section" aria-label="Get started">
-      <div class="cta-box">
+  <!-- ABOUT -->
+  <section id="about" class="about-section" aria-label="About">
+    <div class="shell">
+      <div class="about">
+        <p class="section-label">About Me</p>
+        <div class="about-content">
+          <p>I build AI systems for businesses where critical work still happens in spreadsheets, inboxes, PDFs, manual review queues, and analysts clicking through web portals one record at a time.</p>
+          <p>My career has lived at the intersection of entrepreneurship, fintech, and regulated operations—as a founder, product lead, and hands-on builder. The problems I get pulled into usually arrive as a mess: undocumented processes, conflicting data, tribal knowledge no one has written down, regulations that nobody on the team has fully mapped. The work is sorting through that ambiguity, finding the workflow that's actually running underneath, and rebuilding it into something faster, safer, and more scalable.</p>
+          <p>I co-founded Abe.ai, an AI virtual assistant platform for banks that was acquired by Envestnet | Yodlee. Selling AI into banks in the mid-2010s taught me what most AI products still get wrong: the hard part isn't the model, it's earning trust from compliance, risk, and the frontline users who decide whether the thing actually gets used.</p>
+          <p>My current work centers on Claude Code, agentic development, and multi-agent orchestration. I treat AI as infrastructure for production systems—combining domain-loaded context, specialized agents, structured workflows, testing, and human-in-the-loop controls—not just as a coding assistant.</p>
+          <p>In practice, that's looked like AI systems for complex operating workflows: bankruptcy portfolio valuation, reconciliation between internal systems of record and bank accounts, loan-document triage, and voice-driven structured data entry. One system sorts loan documents against a data tape, routing edge cases to human reviewers. Different domains, same pattern—taking messy, important business processes and turning them into working products.</p>
+          <p>The problems I find most interesting are the ones where AI creates real operational leverage: cutting manual analyst cycles, improving data quality, turning unstructured documents into usable business data, and giving non-technical teams tools they actually rely on.</p>
+          <p>If you're building AI-enabled workflows, modernizing regulated operations, or turning manual expertise into scalable systems, I'd be glad to connect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section id="contact" class="cta-outer" aria-label="Get started">
+    <div class="shell">
+      <div class="cta-section">
         <h2 class="cta-title">Ready to put AI to work?</h2>
         <p class="cta-desc">Let's talk about where AI can save you time and make your business run smoother. No pressure, no commitment.</p>
         <a href="mailto:keith@407labs.com" class="cta-btn">Start the Conversation</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
     © <span id="year"></span> 407 Labs
