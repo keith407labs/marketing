@@ -1,0 +1,8 @@
+.DS_Store
+invoice-template.html
+generate-invoice.sh
+INVOICING.md
+invoice-*.pdf
+
+# Private context / deep-dive notes — never deploy
+context/

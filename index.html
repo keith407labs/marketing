@@ -634,6 +634,72 @@
       line-height: 1.6;
     }
 
+    .product-expand {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 0;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.55);
+      transition: color 0.15s ease;
+    }
+
+    .product-expand:hover {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .product-expand svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card.expanded .product-expand svg {
+      transform: rotate(180deg);
+    }
+
+    .product-body {
+      max-height: 0;
+      overflow: hidden;
+      width: 100%;
+      transition: max-height 0.45s ease;
+    }
+
+    .product-card.expanded .product-body {
+      max-height: 900px;
+    }
+
+    .product-body-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+      padding-top: 20px;
+      margin-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .product-body-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .product-body-inner p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
     .product-actions {
       margin-top: 12px;
     }
@@ -993,8 +1059,28 @@
             <span class="product-label">Built by 407 Labs</span>
             <h2 id="qva-heading" class="product-name">Quick Voice Assistant</h2>
             <p class="product-description">
-              A voice-to-database pipeline that lets field teams create and update Quickbase records by speaking naturally. Nine independent defense layers ensure data integrity—no freeform LLM output ever hits your system.
+              Speak a plain-language instruction and QVA writes it straight into your Quickbase—validated, confirmed by you, and fully audited. Engineered so no freeform AI output ever touches your system of record.
             </p>
+            <button class="product-expand" aria-expanded="false" aria-controls="qva-body">
+              How it works
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="qva-body" class="product-body">
+              <div class="product-body-inner">
+                <div>
+                  <div class="product-body-label">Architecture</div>
+                  <p>QVA is built so the AI never writes freely to your data. A spoken instruction becomes a structured change scoped to your own Quickbase table, and every write is shown back to you as a plain before/after diff—nothing is saved until you confirm it.</p>
+                </div>
+                <div>
+                  <div class="product-body-label">Security &amp; trust</div>
+                  <p>Credentials are encrypted, each organization's data is strictly isolated, and built-in defenses reject attempts to manipulate the assistant. Every change is logged with full before/after history, so you always have a complete audit trail of who changed what.</p>
+                </div>
+                <div>
+                  <div class="product-body-label">Why it matters</div>
+                  <p>Field and office teams update records by speaking naturally instead of typing into forms—cutting data-entry time and errors while keeping a human in control and a clean record of every change.</p>
+                </div>
+              </div>
+            </div>
             <div class="product-actions">
               <a
                 class="ghost-btn"
@@ -1010,8 +1096,28 @@
             <span class="product-label">Built by 407 Labs</span>
             <h2 id="pvl-heading" class="product-name">Portfolio Valuation Lab</h2>
             <p class="product-description">
-              A full-stack Chapter 13 valuation engine for institutional debt buyers. PVL converts raw court and trustee data into investor-ready PDF memos with per-claim pricing, risk scoring, and bid guidance—powered by survival curve modeling across 93 federal districts.
+              A Chapter 13 claim-valuation engine for institutional debt buyers. PVL prices whole portfolios straight from trustee disbursement data—survival-curve modeling, Monte Carlo risk bands, and investor-ready PDF memos where every number traces back to the model.
             </p>
+            <button class="product-expand" aria-expanded="false" aria-controls="pvl-body">
+              How it works
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="pvl-body" class="product-body">
+              <div class="product-body-inner">
+                <div>
+                  <div class="product-body-label">Architecture</div>
+                  <p>PVL prices entire portfolios of Chapter 13 claims directly from trustee payment data, combining survival-curve modeling with simulation to produce a defensible range of outcomes—not a single guess—delivered as investor-ready PDF memos with per-claim pricing and bid guidance.</p>
+                </div>
+                <div>
+                  <div class="product-body-label">Reliability &amp; trust</div>
+                  <p>The engine runs as a self-maintaining system: a coordinated set of AI agents continuously reviews, tests, and validates it. Every number in the client memo is traced back to model output, so each valuation is auditable and defensible.</p>
+                </div>
+                <div>
+                  <div class="product-body-label">Why it matters</div>
+                  <p>PVL turns days of manual, spreadsheet-based valuation into fast, consistent pricing—giving debt buyers a repeatable, well-grounded basis for deciding what a portfolio is worth and what to bid.</p>
+                </div>
+              </div>
+            </div>
             <div class="product-actions">
               <a
                 class="ghost-btn"
@@ -1088,6 +1194,15 @@
     document.querySelectorAll(".case-card").forEach(function (card) {
       card.addEventListener("click", function () {
         this.classList.toggle("expanded");
+      });
+    });
+
+    // Product card "How it works" expand/collapse
+    document.querySelectorAll(".product-expand").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const card = this.closest(".product-card");
+        const expanded = card.classList.toggle("expanded");
+        this.setAttribute("aria-expanded", expanded);
       });
     });
   </script>
